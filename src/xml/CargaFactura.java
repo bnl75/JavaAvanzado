@@ -5,10 +5,8 @@
  */
 package xml;
 
-import bd.Conexion;
 import bd.Poblar;
 import java.io.File;
-import java.sql.Connection;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -21,15 +19,19 @@ import org.w3c.dom.NodeList;
  * @author Diego
  */
 public class CargaFactura {
-    public static double costoTotal;
+    private double costoTotal;
 
+    //Método Get
+    public double getCostoTotal() {
+        return costoTotal;
+    }
+
+    //Método Set
+    public void setCostoTotal(double costoTotal) {
+        this.costoTotal = costoTotal;
+    }
     
     public static void main(String[] args) {
-        Connection conn;
-        
-        
-        Conexion.cargar();
-        conn = Conexion.conectar("jdbc:mysql://localhost:3306/prueba", "diegobnl", "123");
         
          try {
             File archivo = new File("C:\\Users\\USER\\Desktop\\Facturas.xml");
@@ -44,11 +46,10 @@ public class CargaFactura {
                 if (nodo.getNodeType() == Node.ELEMENT_NODE) {  //Si es un elemento de tipo nodo
                     
                     Element element = (Element) nodo;
-                    costoTotal = Double.parseDouble(element.getElementsByTagName("costo_total").item(0).getTextContent());
-                    Poblar.poblarFactura(conn, costoTotal);
+                    //Poblar.poblarFactura(Double.parseDouble(element.getElementsByTagName("costo_total").item(0).getTextContent()));
                     
                     //Element element = (Element) nodo;
-                    //System.out.println("Costo total: " + element.getElementsByTagName("costo_total").item(0).getTextContent());
+                    System.out.println("Costo total: " + element.getElementsByTagName("costo_total").item(0).getTextContent());
                 }
             }
         } catch (Exception e) {

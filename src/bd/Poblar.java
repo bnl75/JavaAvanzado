@@ -15,13 +15,13 @@ import java.sql.SQLException;
  */
 public class Poblar {
     
-    public static void poblarFactura(Connection conn, double x) {
-        //Connection conn;
+    public static void poblarFactura(double x) {
+        Connection conn;
         PreparedStatement ps;
         //int renglones_afectados;
         
-        //Conexion.cargar();
-        //conn = Conexion.conectar("jdbc:mysql://localhost:3306/prueba", "diegobnl", "123");
+        Conexion.cargar();
+        conn = Conexion.conectar("jdbc:mysql://localhost:3306/prueba", "diegobnl", "123");
         
         String query = "INSERT INTO factura (monto) VALUES(?)";
         
@@ -34,7 +34,7 @@ public class Poblar {
             ps.close();
             conn.close();
         } catch (SQLException e) {
-            
+            e.printStackTrace();
         }
         
     }
