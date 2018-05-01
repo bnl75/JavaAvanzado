@@ -52,7 +52,7 @@
                       <Component id="BT7" alignment="0" max="32767" attributes="0"/>
                       <Component id="BT6" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="23" max="32767" attributes="0"/>
+                  <EmptySpace pref="93" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -274,7 +274,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="176" max="32767" attributes="0"/>
+                  <EmptySpace pref="219" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -341,7 +341,8 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="58" green="62" red="b0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Actualizar marca y/o modelo de un vehiculo"/>
+            <Property name="text" type="java.lang.String" value="Actualizar marca y modelo de un vehiculo"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BT9ActionPerformed"/>
@@ -364,6 +365,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="JT3">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JT3ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -446,6 +450,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Buscar nombre, placas, costo poliza y prima asegurada"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BT5ActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
           <AuxValues>

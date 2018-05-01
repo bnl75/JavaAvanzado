@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aseguradora;
+package modelo;
 
-import static aseguradora.Lecturas.nombres;
+import controlador.Conexion;
+import static modelo.Lecturas.nombres;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;

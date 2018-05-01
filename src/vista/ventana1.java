@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aseguradora;
+package vista;
+
+import controlador.Actualizar;
+import controlador.Consultas;
 
 /**
  *
@@ -102,7 +105,7 @@ public class ventana1 extends javax.swing.JFrame {
                     .addComponent(jScrollPane3)
                     .addComponent(BT7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BT6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,7 +202,8 @@ public class ventana1 extends javax.swing.JFrame {
         });
 
         BT9.setBackground(new java.awt.Color(176, 98, 88));
-        BT9.setText("Actualizar marca y/o modelo de un vehiculo");
+        BT9.setText("Actualizar marca y modelo de un vehiculo");
+        BT9.setToolTipText("");
         BT9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BT9ActionPerformed(evt);
@@ -215,6 +219,12 @@ public class ventana1 extends javax.swing.JFrame {
         });
 
         jLabel2.setText("direccion");
+
+        JT3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JT3ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("marca");
 
@@ -261,7 +271,7 @@ public class ventana1 extends javax.swing.JFrame {
                             .addComponent(JT)
                             .addComponent(JT3)
                             .addComponent(JT4, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))))
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,6 +308,11 @@ public class ventana1 extends javax.swing.JFrame {
 
         BT5.setBackground(new java.awt.Color(168, 200, 160));
         BT5.setText("Buscar nombre, placas, costo poliza y prima asegurada");
+        BT5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT5ActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -410,6 +425,7 @@ public class ventana1 extends javax.swing.JFrame {
     Actualizar.actualizaModelo(ip, modelo);
     JT.setText(null);
     JT3.setText(null);
+    JT4.setText(null);
     }//GEN-LAST:event_BT9ActionPerformed
 
     private void BT10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT10ActionPerformed
@@ -417,12 +433,26 @@ public class ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_BT10ActionPerformed
 
     private void BT4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT4ActionPerformed
+    
         // TODO add your handling code here:
-    jTextArea1.setText(null);
-    busqueda=JT1.getText();
-    jTextArea1.append(Consultas.busqueda1(busqueda));
-    JT1.setText(null);
+        jTextArea1.setText(null);
+        busqueda=JT1.getText();
+        jTextArea1.append(Consultas.busqueda1(busqueda));
+        JT1.setText(null);
+    
     }//GEN-LAST:event_BT4ActionPerformed
+
+    private void BT5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT5ActionPerformed
+        // TODO add your handling code here:
+        jTextArea1.setText(null);
+        busqueda=JT1.getText();
+        jTextArea1.append(Consultas.busqueda2(busqueda));
+        JT1.setText(null);
+    }//GEN-LAST:event_BT5ActionPerformed
+
+    private void JT3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JT3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JT3ActionPerformed
 
     /**
      * @param args the command line arguments
