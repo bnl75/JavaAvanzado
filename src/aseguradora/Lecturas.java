@@ -24,6 +24,10 @@ public class Lecturas {
     static double[] montos =new double[4];
     static String[] nombres = new String[4];
     static String[] direcciones = new String[4];
+    static String[] placas = new String[4];
+    static String[] marcas = new String[4];
+    static String[] modelos = new String[4];
+    static int[] facturas = new int[4];
     
     public static void leerFacturas() throws SQLException {
         double costo;
@@ -131,7 +135,7 @@ public class Lecturas {
             
             } catch (SQLException e) {
             e.printStackTrace();
-        }
+            }
             
         }
         
@@ -143,29 +147,35 @@ public class Lecturas {
     
     
     public static void leerVehiculos() throws SQLException {
-        String nombre;
-        String direccion;
+        String placa;
+        String marca;
+        String modelo;
+        int id_factura;
         Connection conn;
         PreparedStatement ps;
         int renglones_afectados;
         
         try {
-            File archivo = new File("C:\\Users\\USER\\Desktop\\Clientes.xml");
+            File archivo = new File("C:\\Users\\USER\\Desktop\\Vehiculos.xml");
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = dbf.newDocumentBuilder();
             Document document = documentBuilder.parse(archivo);     //Todo esto (renglones anteriores tambien) es para hacer un casteo y saber de qué tipo de documento se trata
             System.out.println("Elemento raiz: " + document.getDocumentElement().getNodeName());
-            NodeList listaEmpleados = document.getElementsByTagName("cliente");    //Un arreglo de nodos (un nodo es una etiqueta del xml)
+            NodeList listaEmpleados = document.getElementsByTagName("vehiculo");    //Un arreglo de nodos (un nodo es una etiqueta del xml)
             for (int i = 0; i < listaEmpleados.getLength(); i++) {
                 Node nodo = listaEmpleados.item(i);     //Para obtener los nodos en una lista de nodos
                 if (nodo.getNodeType() == Node.ELEMENT_NODE) {  //Si es un elemento de tipo nodo
                     Element element = (Element) nodo;
                     
-                    nombre = element.getElementsByTagName("nombre").item(0).getTextContent();
-                    direccion = element.getElementsByTagName("direccion").item(0).getTextContent();
+                    placa = element.getElementsByTagName("placas").item(0).getTextContent();
+                    marca = element.getElementsByTagName("marca").item(0).getTextContent();
+                    modelo = element.getElementsByTagName("modelo").item(0).getTextContent();
+                    id_factura = Integer.parseInt(element.getElementsByTagName("id_factura").item(0).getTextContent());
                     
-                    nombres[i] = nombre;
-                    direcciones[i] = direccion;
+                    placas[i] = placa;
+                    marcas[i] = marca;
+                    modelos[i] = modelo;
+                    facturas[i] = id_factura;
                     
                 }
             }
@@ -178,13 +188,15 @@ public class Lecturas {
         
         for (int i = 0; i < nombres.length; i++) {
             
-            String query = "INSERT INTO cliente (nombre, direccion) VALUES(?, ?)";
+            String query = "INSERT INTO vehiculo (placa, marca, modelo, id_factura) VALUES(?, ?, ?, ?)";
             try {
             ps = conn.prepareStatement(query);
             
             
-            ps.setString(1, nombres[i]);
-            ps.setString(2, direcciones[i]);
+            ps.setString(1, placas[i]);
+            ps.setString(2, marcas[i]);
+            ps.setString(3, modelos[i]);
+            ps.setInt(4, facturas[i]);
             
             
             renglones_afectados = ps.executeUpdate();
